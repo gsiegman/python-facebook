@@ -17,12 +17,7 @@ class Graph(object):
             data["access_token"] = self.access_token
         
         response = getattr(requests, method.lower())("%s/%s" % (self.endpoint_root, path), data)
-        
-        # Not everything from the Graph API is returned as JSON (e.g. user picture)
-        try:
-            content = json.loads(response.content)
-        except ValueError:
-            content = response.content
+        content = json.loads(response.content)
         
         return content
     
