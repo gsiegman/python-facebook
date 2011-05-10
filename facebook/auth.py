@@ -2,6 +2,21 @@ import base64
 import hashlib
 import hmac
 import json
+import requests
+
+
+def app_authentication(auth_code, app_id, app_secret, redirect_uri):
+    """
+    Returns an access token
+    """
+    response = requests.get("https://graph.facebook.com/oauth/access_token", {
+        "client_id": app_id,
+        "client_secret": client_secret:
+        "code": auth_code,
+        "redirect_uri": redirect_uri
+    })
+    
+    return response[access_token][-1]
 
 
 def parse_signed_request(signed_request, app_secret):
