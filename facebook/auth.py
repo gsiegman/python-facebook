@@ -1,4 +1,5 @@
 import base64
+import cgi
 import hashlib
 import hmac
 import json
@@ -16,7 +17,9 @@ def app_authentication(auth_code, app_id, app_secret, redirect_uri):
         "redirect_uri": redirect_uri
     })
     
-    return json.loads(response.content)["access_token"][-1]
+    access_token = cgi.parse_qs(response.content)["access_token"][-1]
+    
+    return access_token
 
 
 def parse_signed_request(signed_request, app_secret):
