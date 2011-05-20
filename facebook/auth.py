@@ -16,7 +16,7 @@ def app_authentication(auth_code, app_id, app_secret, redirect_uri):
         "redirect_uri": redirect_uri
     })
     
-    return response["access_token"][-1]
+    return response.content["access_token"][-1]
 
 
 def parse_signed_request(signed_request, app_secret):
