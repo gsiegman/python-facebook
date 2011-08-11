@@ -32,3 +32,6 @@ class Graph(object):
     
     def get_user_likes(self, facebook_id="me"):
         return self._request("/".join([facebook_id, "likes"]), "GET")
+
+    def get_user_albums(self, facebook_id="me"):
+        return self._request("/".join([facebook_id, "albums"]), "GET")
