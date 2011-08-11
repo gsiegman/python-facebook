@@ -17,7 +17,12 @@ class Graph(object):
             data["access_token"] = self.access_token
         
         response = getattr(requests, method.lower())("%s/%s" % (self.endpoint_root, path), data)
-        content = json.loads(response.content)
+        response_content = json.loads(response.content)
+        
+        if "data" in response_content:
+            content = response_content["data"]
+        else:
+            content = json.loads(response.content)
         
         return content
     
