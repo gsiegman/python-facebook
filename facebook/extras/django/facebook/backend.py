@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 from facebook.auth import app_authentication
-from facebook.extras.django.auth.models import FacebookProfile
+from facebook.extras.django.facebook.models import FacebookProfile
 from facebook.graph import Graph
 
 

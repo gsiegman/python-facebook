@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate
 
 from facebook.auth import parse_signed_request
-from facebook.extras.django.auth.models import FacebookProfile
+from facebook.extras.django.facebook.models import FacebookProfile
 
 
 def authenticate_view(request):
