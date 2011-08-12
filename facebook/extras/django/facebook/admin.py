@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from facebook.extras.django.auth.models import FacebookProfile
+from facebook.extras.django.facebook.models import FacebookProfile
 
 
 class FacebookProfileAdmin(admin.ModelAdmin):
