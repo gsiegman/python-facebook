@@ -26,5 +26,5 @@ setup(
         'Programming Language :: Python',
         ],
     packages=['facebook',],
-    install_requires=['requests',]
+    install_requires=['requests', 'bunch',]
 )

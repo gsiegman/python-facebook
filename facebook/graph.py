@@ -1,3 +1,4 @@
+import bunch
 import json
 import requests
 
@@ -26,6 +27,12 @@ class Graph(object):
         
         return content
     
+    def get_object(self, facebook_id="me"):
+        obj = self._request(facebook_id, "GET")
+        
+        return bunch.bunchify(obj)
+    
+    # Deprecated: leaving here for backwards compatibility until next update
     def get_user(self, facebook_id="me"):
         return self._request(facebook_id, "GET")
     
@@ -37,3 +44,4 @@ class Graph(object):
     
     def get_user_likes(self, facebook_id="me"):
         return self._request("/".join([facebook_id, "likes"]), "GET")
+
