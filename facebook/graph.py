@@ -23,7 +23,7 @@ class Graph(object):
         if "data" in response_content:
             content = response_content["data"]
         else:
-            content = json.loads(response.content)
+            content = response_content
         
         return content
     
