@@ -10,12 +10,13 @@ def app_authentication(auth_code, app_id, app_secret, redirect_uri):
     """
     Returns an access token
     """
-    response = requests.get("https://graph.facebook.com/oauth/access_token", {
-        "client_id": app_id,
-        "client_secret": app_secret,
-        "code": auth_code,
-        "redirect_uri": redirect_uri
-    })
+    response = requests.get("https://graph.facebook.com/oauth/access_token", 
+        params={
+            "client_id": app_id,
+            "client_secret": app_secret,
+            "code": auth_code,
+            "redirect_uri": redirect_uri
+        })
     
     access_token = cgi.parse_qs(response.content)["access_token"][-1]
     
