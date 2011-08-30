@@ -1,3 +1,4 @@
+import bunch
 import json
 import requests
 
@@ -17,10 +18,21 @@ class Graph(object):
             data["access_token"] = self.access_token
         
         response = getattr(requests, method.lower())("%s/%s" % (self.endpoint_root, path), data)
-        content = json.loads(response.content)
+        response_content = json.loads(response.content, object_pairs_hook=bunch.Bunch)
+        
+        if "data" in response_content:
+            content = response_content["data"]
+        else:
+            content = response_content
         
         return content
     
+    def get_object(self, facebook_id="me"):
+        obj = self._request(facebook_id, "GET")
+        
+        return obj
+    
+    # Deprecated: leaving here for backwards compatibility until next update
     def get_user(self, facebook_id="me"):
         return self._request(facebook_id, "GET")
     
