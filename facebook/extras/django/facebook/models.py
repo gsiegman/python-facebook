@@ -18,4 +18,8 @@ class FacebookProfile(models.Model):
     def friends(self):
         g = Graph(str(self.access_token))
         return g.get_user_friends()
-    
+
+    @property
+    def albums(self):
+        g = Graph(str(self.access_token))
+        return g.get_user_albums()

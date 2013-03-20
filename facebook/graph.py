@@ -17,7 +17,7 @@ class Graph(object):
         if self.access_token:
             data["access_token"] = self.access_token
         
-        response = getattr(requests, method.lower())("%s/%s" % (self.endpoint_root, path), data)
+        response = getattr(requests, method.lower())("%s/%s" % (self.endpoint_root, path), params=data)
         response_content = json.loads(response.content, object_pairs_hook=bunch.Bunch)
         
         if "data" in response_content:
@@ -45,3 +45,5 @@ class Graph(object):
     def get_user_likes(self, facebook_id="me"):
         return self._request("/".join([facebook_id, "likes"]), "GET")
 
+    def get_user_albums(self, facebook_id="me"):
+        return self._request("/".join([facebook_id, "albums"]), "GET")
